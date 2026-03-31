@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ekurhuleni Underground — Issue 10: The City Inside the City</title>
+<style>
+  :root {
+    --gold: #B8963E;
+    --dark: #1A1A1A;
+    --mid: #555555;
+    --light: #888888;
+    --bg: #FAFAF7;
+    --rule: #DDDDDD;
+    --tint: #F5F0E8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--dark);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 17px;
+    line-height: 1.75;
+  }
+  .page-wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    border-bottom: 3px solid var(--gold);
+    padding: 14px 0 10px;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .site-header .pub-name {
+    font-family: 'Arial', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  .site-header .issue-meta {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: var(--light);
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    text-align: center;
+    padding: 48px 0 32px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .masthead h1 {
+    font-family: Arial, sans-serif;
+    font-size: clamp(40px, 8vw, 64px);
+    font-weight: 900;
+    letter-spacing: .06em;
+    color: var(--dark);
+    line-height: 1;
+  }
+  .masthead h1 span { color: var(--gold); display: block; }
+  .masthead .tagline {
+    font-style: italic;
+    color: var(--mid);
+    margin-top: 12px;
+    font-size: 16px;
+  }
+
+  /* ── SECTION LABELS ── */
+  .label {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 52px;
+    margin-bottom: 8px;
+  }
+
+  /* ── THEME BLOCK ── */
+  .theme-block {
+    background: var(--tint);
+    border-left: 4px solid var(--gold);
+    padding: 24px 28px;
+    margin: 28px 0 32px;
+  }
+  .theme-block h2 {
+    font-family: Arial, sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 4px;
+  }
+  .theme-block .sub {
+    font-style: italic;
+    color: var(--mid);
+    font-size: 15px;
+    margin-bottom: 18px;
+  }
+  .theme-block p { margin-bottom: 14px; font-size: 16px; color: var(--mid); }
+  .theme-block p:last-child { margin-bottom: 0; }
+
+  /* ── ISSUE TITLE ── */
+  .issue-title {
+    padding: 36px 0 28px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .issue-title h2 {
+    font-family: Arial, sans-serif;
+    font-size: clamp(26px, 5vw, 40px);
+    font-weight: 900;
+    color: var(--dark);
+    line-height: 1.15;
+    margin-bottom: 14px;
+  }
+  .issue-title .deck {
+    font-style: italic;
+    font-size: 19px;
+    color: var(--mid);
+    line-height: 1.55;
+  }
+
+  /* ── SECTION HEAD ── */
+  .section-head {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--dark);
+    border-bottom: 3px solid var(--gold);
+    padding-bottom: 8px;
+    margin-bottom: 22px;
+  }
+
+  /* ── BODY COPY ── */
+  p.body { margin-bottom: 20px; text-align: justify; }
+
+  /* ── PULL QUOTE ── */
+  blockquote.pull {
+    border-top: 3px solid var(--gold);
+    border-bottom: 3px solid var(--gold);
+    padding: 22px 32px;
+    margin: 36px 0;
+    font-style: italic;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--gold);
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  /* ── SECTION MARKER ── */
+  .essay-section-label {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 36px 0 10px;
+  }
+
+  /* ── MICRO PROFILE ── */
+  .micro {
+    margin-bottom: 32px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+  }
+  .micro:first-of-type { border-top: none; padding-top: 0; }
+  .micro-title {
+    font-family: Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 2px;
+  }
+  .micro-title span { color: var(--gold); }
+  .micro-loc {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-bottom: 10px;
+  }
+
+  /* ── MAP COORDS ── */
+  .coords {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  /* ── BIG NUMBER ── */
+  .big-number {
+    text-align: center;
+    padding: 32px 0 24px;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    margin: 8px 0 28px;
+  }
+  .big-number .num {
+    font-family: Arial, sans-serif;
+    font-size: clamp(36px, 7vw, 56px);
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .big-number .num-label {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--mid);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+
+  /* ── CLOSING ── */
+  .byline {
+    font-style: italic;
+    color: var(--mid);
+    font-size: 15px;
+    text-align: right;
+    margin-top: 28px;
+  }
+  .next-issue {
+    border-top: 1px solid var(--rule);
+    margin-top: 32px;
+    padding-top: 18px;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--light);
+  }
+
+  /* ── FOOTER ── */
+  .site-footer {
+    border-top: 1px solid var(--rule);
+    padding: 20px 0 0;
+    margin-top: 60px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: var(--light);
+    text-align: center;
+  }
+  .site-footer a { color: var(--gold); text-decoration: none; }
+
+  hr.rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 44px 0;
+  }
+
+  @media (max-width: 480px) {
+    body { font-size: 16px; }
+    .page-wrap { padding: 0 16px 60px; }
+    blockquote.pull { padding: 16px 18px; font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <header class="site-header">
+    <span class="pub-name">Ekurhuleni Underground</span>
+    <span class="issue-meta">Issue 10 &nbsp;|&nbsp; 27 March 2026</span>
+  </header>
+
+  <div class="masthead">
+    <h1>EKURHULENI<span>UNDERGROUND</span></h1>
+    <p class="tagline">The hidden systems of the East Rand</p>
+  </div>
+
+  <!-- THEME ANALYSIS -->
+  <div class="label">Theme Analysis — Issue 10</div>
+  <div class="theme-block">
+    <h2>The Tembisa Metabolism</h2>
+    <p class="sub">Why this theme matters for the long-term economic story of Ekurhuleni</p>
+    <p>The theme of the Tembisa Metabolism is not a story about a township. It is a story about scale — about what happens when a human settlement grows so large and so dense that it develops the characteristics of a city, complete with specialised economic districts, layered financial systems, and supply chains that connect to global trade in ways that formal analysis has never adequately mapped.</p>
+    <p><strong>The deep story:</strong> how Tembisa — one of the largest urban settlements in South Africa, home to an estimated half a million people — has developed a self-sustaining economic metabolism that processes goods, capital, and labour at a scale that dwarfs many provincial towns, almost entirely off the formal economy's ledger.</p>
+    <p><strong>Three supporting micro-stories:</strong> the wholesale distribution network operating along the Clayville-Tembisa industrial fringe, which has quietly built a supply chain connecting Chinese importers to thousands of spaza operators across the East Rand; the stokvel and burial society infrastructure clustered around the main taxi ranks, which collectively intermediates more household savings than any formal bank branch in the area; and the backyard construction materials economy — brick-makers, door-frame welders, window fabricators — that supplies the township's incessant self-building housing market with products cheaper and faster than any formal building supplier can match.</p>
+    <p><strong>The overlooked place:</strong> the Tembisa-Clayville industrial fringe — a two-kilometre seam where the township grid meets the formal industrial zone, and where a supply-chain ecosystem has grown in the gap between them.</p>
+    <p><strong>The interesting statistic:</strong> Tembisa's estimated population of 450,000–600,000 makes it larger, by headcount, than the capital cities of Botswana, Namibia, or Mozambique — and it has no dedicated economic development strategy of its own.</p>
+  </div>
+
+  <hr class="rule">
+
+  <!-- ISSUE TITLE -->
+  <div class="label">Weekly Issue — 27 March 2026</div>
+  <div class="issue-title">
+    <h2>The City Inside the City</h2>
+    <p class="deck">How Tembisa built an economy the formal sector still hasn't learned to read — and what it would mean if anyone bothered to try.</p>
+  </div>
+
+  <!-- 1. EDITORIAL -->
+  <div class="label">1. Editorial</div>
+  <div class="section-head">The Pulse at the Rank</div>
+
+  <p class="body">There is a particular kind of morning energy that belongs to the taxi ranks of Tembisa. Not noise exactly — or not only noise — but something more architectural: a structured density of movement that takes a few minutes to resolve into its component parts. The women setting out airtime and sweets along the concrete kerbs. The hawkers with their trolleys of bread and fat cakes still warm from the oil. The dispatchers calling destinations in a shorthand that sounds like music to anyone who does not know it. And threaded through all of this, the taxis themselves — arriving full, emptying, filling again — running a logistics network that no app has fully mapped and no transport authority completely regulates, and yet which moves several hundred thousand people through their days with a reliability that formal public transport has never matched in this part of the city.</p>
+
+  <p class="body">I have been thinking about Tembisa for some months now. Not with the sympathy that often distorts writing about townships, and not with the suspicion that sometimes replaces it. More with the curiosity I would bring to any economic system that is clearly working and clearly not being explained. Because Tembisa is working. The question that interests me is how — and to what extent what it has built is visible to the people who might be in a position to support it.</p>
+
+  <p class="body">Here is a simple number that should give anyone pause: the population of Tembisa is somewhere between 450,000 and 600,000 — estimates vary widely, which is itself a fact worth sitting with. That is more people than live in Windhoek, more than Gaborone, comparable to Maputo's urban core. It is a city by any reasonable definition. And yet it does not appear in most analyses of Gauteng's economy as a city. It appears as a township, which is a category that carries with it a set of assumptions — about informality, about dependency, about economic passivity — that Tembisa's actual economic life constantly contradicts.</p>
+
+  <p class="body">The economy of Tembisa is not informal in the sense of being underdeveloped. It is informal in the sense of being unmeasured. The distinction matters. There are wholesale supply chains operating here that connect Chinese manufacturers to township retailers faster and more cheaply than any formal distribution network in the country manages. There are financial intermediaries — the burial societies, the stokvels, the mashonisas who work alongside them — that collectively manage household capital at a scale that would surprise any bank's retail credit team. There are manufacturers operating out of backyard workshops who produce construction materials that cost less and arrive faster than anything available at a hardware chain. All of this is happening, continuously, at city scale. Almost none of it appears in any official account of how the economy of Ekurhuleni works. This issue is an attempt to change that — at least slightly.</p>
+
+  <!-- 2. LONG ESSAY -->
+  <div class="label">2. The Long Essay</div>
+  <div class="section-head">The Metabolism of an Unmeasured City</div>
+
+  <div class="essay-section-label">Section I — The Observation</div>
+  <p class="body">Come at it from the Clayville side, from the R25 heading south, and Tembisa's scale announces itself differently than it does from within. What you see, from the elevated road, is density without obvious centre — a horizontal city that seems to extend further than the eye can comfortably resolve, broken only by the occasional church spire or water tower. Then, as you drop down toward the township's northern edge, a seam appears: a belt of warehouses, container yards, and modest industrial units that marks the transition between the formal Clayville industrial zone and the township grid. This is the Tembisa-Clayville fringe, and it is more economically significant than it looks.</p>
+
+  <p class="body">Here, in warehouses that bear no corporate signage and invite no passing trade, wholesale distributors have established what amounts to a parallel retail supply chain. The goods they stock — cooking oil, maize meal, cleaning products, airtime, personal care items, sweets and snacks — are the daily merchandise of the spaza economy, and they move in volumes that would make a regional manager at a formal distributor uncomfortable. Pallets arrive from Chinese importers and from domestic manufacturers who have learned that the township wholesale channel is both faster and lower-cost than servicing formal retailers. Smaller traders — spaza operators, hawkers, backyard dealers — arrive by bakkie, taxi, or on foot to buy in the quantities that work for their weekly liquidity. The transactions are cash, the relationships are durable, and the prices are consistently below what any formal wholesale channel offers. What you are looking at, from the elevated road, is not informality. You are looking at a city's supply chain.</p>
+
+  <blockquote class="pull">Tembisa is not informal in the sense of being underdeveloped. It is informal in the sense of being unmeasured. The distinction is the whole argument.</blockquote>
+
+  <div class="essay-section-label">Section II — The Hidden System</div>
+  <p class="body">Tembisa's hidden economy operates across three distinct but deeply interconnected layers. The first is commercial: the network of spaza shops that constitutes the township's retail infrastructure, supplied by the Clayville fringe wholesalers and by a secondary network of mobile traders who run daily delivery rounds through the residential streets. These are not convenience stores in the formal sense. They are the primary retail channel for most of Tembisa's population — open before the formal shops, open after them, priced for households managing daily cash flows rather than weekly shopping budgets. The spaza network has survived repeated predictions of its death by formal retail expansion. It survives because it offers something no chain can replicate: proximity, credit extended across years of relationship, and the kind of inventory intelligence that comes from knowing your customer by name and knowing her household's rhythms by heart.</p>
+
+  <p class="body">The second layer is financial. Around the main taxi ranks and in the residential streets radiating from them, an informal financial services ecology has evolved that provides products the formal banking sector does not: burial insurance that pays out within days rather than weeks; stokvel arrangements that function simultaneously as savings vehicles, social bonds, and rotating credit facilities; short-term lending from mashonisas who charge rates the formal sector would describe as predatory but who require no documentation and deliver in minutes. These are not substitutes for formal financial products in the way that economists usually mean when they describe financial exclusion. For many households, they are genuinely preferable — faster, more flexible, and grounded in social accountability rather than bureaucratic process. The aggregate capital intermediated by this ecology, across a population of half a million, is large. No one has measured it.</p>
+
+  <p class="body">The third layer is manufacturing. Throughout Tembisa's residential areas, backyard workshops produce construction materials — face bricks, concrete blocks, steel door frames, window casements, burglar bars — that supply the township's constant housing self-improvement market. Tembisa's housing stock is in continuous modification: rooms added, structures upgraded, formal houses extended backward and upward by owners who are accumulating wealth through their homes rather than through financial instruments. The backyard manufacturers who supply this activity are its hidden industrial base. They have developed product knowledge, pricing discipline, and same-day delivery logistics that no formal building materials chain has come close to matching in the township context — not because the chains haven't tried, but because the economics of the formal model cannot compete with the economics of the man with the cement mixer two streets away.</p>
+
+  <div class="essay-section-label">Section III — The Broader Insight</div>
+  <p class="body">Tembisa confronts Ekurhuleni's planners — and South Africa's economists — with a productive discomfort. Here is an urban settlement of city scale that has built functioning commercial, financial, and light-industrial systems without being planned, without being comprehensively mapped, and without receiving the infrastructure investment that formally recognised cities receive as a matter of course. The question this raises is not simply how Tembisa works. The question is: what would Tembisa become if it were treated as the city it already is?</p>
+
+  <p class="body">The answer, if the experience of comparable informal urban economies elsewhere on the continent is any guide, is: considerably more of what it already is. Research on township commercial development in South Africa consistently suggests that the primary constraints on informal business growth are not entrepreneurial — the entrepreneurship is demonstrably already there — but infrastructural: unreliable electricity, insecure property rights, limited access to digital payment infrastructure, and inadequate logistics connectivity. These are solvable problems. They are not being solved, in the main, because Tembisa is still being conceptualised as a township — a problem to be managed — rather than as an economic actor with assets, capabilities, and a track record that deserve serious investment.</p>
+
+  <div class="essay-section-label">Section IV — The Antifragile Angle</div>
+  <p class="body">Tembisa's informal economy has demonstrated, across a decade of national volatility, the property that matters most in unstable environments: it grows stronger under pressure. When load-shedding peaked through 2023 and 2024, the informal sector did not simply endure — it adapted and expanded. Gas traders extended their distribution networks into streets that formal LPG retailers had never served. Solar panel and battery resellers appeared at every major intersection, supplied through informal import channels before formal retailers had adjusted their stock. Diesel suppliers serving backyard generators turned volumes that would have impressed a fuel wholesaler. The formal economy contracted; significant parts of Tembisa's informal economy were compensated by the new demand that the formal economy's dysfunction created.</p>
+
+  <p class="body">This is not accidental resilience. It is structural. An economy built on small operators, flexible capital, and dense local knowledge is an economy that can reorganise itself faster than any formal institution can respond to a shock. The risk, as always, is that the same flexibility that creates resilience also creates vulnerability — to predatory lending, to unregulated product quality, to the extraction of value by those with scale advantages who arrive once the market is proven. The policy challenge for Tembisa is not how to formalise its informal economy wholesale. It is how to selectively extend specific enabling conditions — land tenure security, reliable power, basic digital payment rails — without dismantling the adaptive intelligence that makes the system work. That is a more precise and considerably more difficult task than anything South Africa's economic development frameworks are currently designed to deliver. But it is the right task. And the economy of Tembisa has already done the harder work of demonstrating that it is worth doing.</p>
+
+  <!-- 3. HIDDEN ECONOMY -->
+  <div class="label">3. The Hidden Economy</div>
+  <div class="section-head">Three Operations Nobody Is Watching</div>
+
+  <div class="micro">
+    <div class="micro-title"><span>1.</span> The Clayville Supply Run</div>
+    <div class="micro-loc">Tembisa-Clayville Industrial Fringe</div>
+    <p class="body">Daily, beginning before five in the morning, a fleet of bakkies and converted cargo taxis makes its way from Tembisa's spaza network to the wholesale distributors along the Clayville fringe. This is not a formal supply arrangement — no procurement systems, no filed delivery schedules, no invoices in the standard commercial sense. It is a relationship economy: operators who have dealt with the same wholesaler for years, who know what new stock has arrived, who extend and receive informal credit across networks of long-standing trust. The goods that move through this channel include nationally branded products that formal retailers also stock — at prices consistently below what formal wholesale channels offer, because the informal distributor's overheads are a fraction of the chain model's cost base. The township gets its goods. The formal supply chain is bypassed. Nobody files a report.</p>
+  </div>
+
+  <div class="micro">
+    <div class="micro-title"><span>2.</span> The Stokvel Infrastructure</div>
+    <div class="micro-loc">Tembisa Central / Umthambeka Area</div>
+    <p class="body">In the months of October through December — stokvel payout season — the economic activity generated by Tembisa's informal savings clubs becomes visible in ways that formal financial data never captures. Groups of ten to fifty members, who have contributed fixed monthly amounts through the year, receive lump sums that are immediately channelled into household investment: appliances, home improvements, school fees, small business stock. The burial societies running parallel to the stokvels provide a complementary safety net — rapid death benefit payments that prevent catastrophic household financial disruption in a population with limited access to formal life insurance. Together these institutions process hundreds of millions of rands annually in a municipality that the formal financial sector continues to classify, mostly, as underpenetrated. The classification is technically accurate. The implication that nothing is happening financially is not.</p>
+  </div>
+
+  <div class="micro">
+    <div class="micro-title"><span>3.</span> The Backyard Construction Economy</div>
+    <div class="micro-loc">Tembisa Residential Streets</div>
+    <p class="body">In the residential streets behind Tembisa's main arterials, brick-making operations run through the dry winter months when the clay-rich soil can be worked and sun-dried before firing. Cement mixers — often hired by the day from a circuit of equipment owners who have turned asset rental into their own quiet business — produce face bricks and concrete blocks priced well below hardware chain equivalents, delivered within the township on the same day. Steel fabricators working from single-car garages produce door frames and window casements in the standard sizes that fit the township housing typology exactly, built from the experience of fitting hundreds of identical openings. These manufacturers are not serving a marginal market. They are the primary suppliers to the largest self-build housing market in Ekurhuleni — and they deliver faster, cheaper, and with more contextual knowledge than any national chain ever has.</p>
+  </div>
+
+  <!-- 4. MAP -->
+  <div class="label">4. The Map of the Week</div>
+  <div class="section-head">The Tembisa-Clayville Seam</div>
+  <div class="coords">25°59′S &nbsp;28°13′E</div>
+
+  <p class="body">Two kilometres. That is roughly the length of the industrial fringe running along the R25 corridor where Tembisa meets the Clayville and Kempton Park industrial zones. In those two kilometres, the formal and informal economies of the East Rand conduct their most direct and least acknowledged transaction: manufactured goods, priced for formal retail channels, being redirected into informal distribution networks that reach deeper into the township than any formal retailer has managed to go profitably. There are no signs advertising this exchange. The warehouses present blank faces to the passing road. But the bakkie traffic at dawn, the cash transactions at the loading bays, and the steady movement of stock from formal distributor to informal retailer tell a story about how goods actually reach people in Ekurhuleni — a story that does not appear in any supply chain analysis the retail industry has published, and probably should.</p>
+
+  <!-- 5. NUMBER -->
+  <div class="label">5. The East Rand Number</div>
+  <div class="big-number">
+    <span class="num">~500,000</span>
+    <span class="num-label">Estimated population of Tembisa — larger than the capitals of Botswana, Namibia, or Mozambique</span>
+  </div>
+
+  <p class="body">Tembisa's population is estimated at between 450,000 and 600,000, depending on methodology and the year of measurement — and the width of that range is itself revealing. By any of these estimates, it is larger than Gaborone, larger than Windhoek, and comparable to Maputo's urban core. It is, by population, a major African city. It has no city-level economic development authority, no dedicated urban economic strategy, and no comprehensive commercial census. The gap between what Tembisa is and how it is governed is one of the most consequential mismatches in South African urban policy. The city exists. The recognition has not yet arrived to meet it.</p>
+
+  <!-- 6. CLOSING -->
+  <div class="label">6. Closing Reflection</div>
+  <div class="section-head">The City That Is Already There</div>
+
+  <p class="body">There is a version of Tembisa's future that is being built right now, without a plan, without a strategy document, without a ribbon-cutting. It is being built by the wholesaler on the Clayville fringe who extended credit to a spaza operator she has dealt with for seven years; by the bricklayer who knows the winter season is short and works through the night to fill his orders; by the stokvel treasurer who has managed the same group's finances for a decade without missing a single payout. These are not informal activities in the sense of being incomplete. They are foundations — load-bearing structures in an economy that the formal city has not yet learned to see clearly. The question for Ekurhuleni — the one worth asking urgently — is whether the city it governs includes the city that already exists.</p>
+
+  <p class="byline">— Ekurhuleni Underground, 27 March 2026</p>
+
+  <p class="next-issue">Next issue: <strong>The Alberton South Chemical Pocket</strong> — the quiet persistence of specialty chemicals and pharmaceutical manufacturing in one of Ekurhuleni's least-discussed industrial zones.</p>
+
+  <footer class="site-footer">
+    <p>The hidden systems of the East Rand &nbsp;|&nbsp; <a href="https://1906reblabs.github.io/ekurhuleni-underground/">1906reblabs.github.io/ekurhuleni-underground</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
