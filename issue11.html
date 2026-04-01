@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ekurhuleni Underground — Issue 11: The Invisible Synthesis</title>
+<style>
+  :root {
+    --gold: #B8963E;
+    --dark: #1A1A1A;
+    --mid: #555555;
+    --light: #888888;
+    --bg: #FAFAF7;
+    --rule: #DDDDDD;
+    --tint: #F5F0E8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--dark);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 17px;
+    line-height: 1.75;
+  }
+  .page-wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    border-bottom: 3px solid var(--gold);
+    padding: 14px 0 10px;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .site-header .pub-name {
+    font-family: 'Arial', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  .site-header .issue-meta {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: var(--light);
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    text-align: center;
+    padding: 48px 0 32px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .masthead h1 {
+    font-family: Arial, sans-serif;
+    font-size: clamp(40px, 8vw, 64px);
+    font-weight: 900;
+    letter-spacing: .06em;
+    color: var(--dark);
+    line-height: 1;
+  }
+  .masthead h1 span { color: var(--gold); display: block; }
+  .masthead .tagline {
+    font-style: italic;
+    color: var(--mid);
+    margin-top: 12px;
+    font-size: 16px;
+  }
+
+  /* ── SECTION LABELS ── */
+  .label {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 52px;
+    margin-bottom: 8px;
+  }
+
+  /* ── THEME BLOCK ── */
+  .theme-block {
+    background: var(--tint);
+    border-left: 4px solid var(--gold);
+    padding: 24px 28px;
+    margin: 28px 0 32px;
+  }
+  .theme-block h2 {
+    font-family: Arial, sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 4px;
+  }
+  .theme-block .sub {
+    font-style: italic;
+    color: var(--mid);
+    font-size: 15px;
+    margin-bottom: 18px;
+  }
+  .theme-block p { margin-bottom: 14px; font-size: 16px; color: var(--mid); }
+  .theme-block p:last-child { margin-bottom: 0; }
+
+  /* ── EASTER NOTE ── */
+  .easter-note {
+    background: var(--dark);
+    color: var(--bg);
+    padding: 12px 20px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-align: center;
+    margin: 20px 0 0;
+  }
+  .easter-note span { color: var(--gold); }
+
+  /* ── ISSUE TITLE ── */
+  .issue-title {
+    padding: 36px 0 28px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .issue-title h2 {
+    font-family: Arial, sans-serif;
+    font-size: clamp(26px, 5vw, 40px);
+    font-weight: 900;
+    color: var(--dark);
+    line-height: 1.15;
+    margin-bottom: 14px;
+  }
+  .issue-title .deck {
+    font-style: italic;
+    font-size: 19px;
+    color: var(--mid);
+    line-height: 1.55;
+  }
+
+  /* ── SECTION HEAD ── */
+  .section-head {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--dark);
+    border-bottom: 3px solid var(--gold);
+    padding-bottom: 8px;
+    margin-bottom: 22px;
+  }
+
+  /* ── BODY COPY ── */
+  p.body { margin-bottom: 20px; text-align: justify; }
+
+  /* ── PULL QUOTE ── */
+  blockquote.pull {
+    border-top: 3px solid var(--gold);
+    border-bottom: 3px solid var(--gold);
+    padding: 22px 32px;
+    margin: 36px 0;
+    font-style: italic;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--gold);
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  /* ── SECTION MARKER ── */
+  .essay-section-label {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 36px 0 10px;
+  }
+
+  /* ── MICRO PROFILE ── */
+  .micro {
+    margin-bottom: 32px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+  }
+  .micro:first-of-type { border-top: none; padding-top: 0; }
+  .micro-title {
+    font-family: Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 2px;
+  }
+  .micro-title span { color: var(--gold); }
+  .micro-loc {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-bottom: 10px;
+  }
+
+  /* ── MAP COORDS ── */
+  .coords {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  /* ── BIG NUMBER ── */
+  .big-number {
+    text-align: center;
+    padding: 32px 0 24px;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    margin: 8px 0 28px;
+  }
+  .big-number .num {
+    font-family: Arial, sans-serif;
+    font-size: clamp(36px, 7vw, 56px);
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .big-number .num-label {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--mid);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+
+  /* ── CLOSING ── */
+  .byline {
+    font-style: italic;
+    color: var(--mid);
+    font-size: 15px;
+    text-align: right;
+    margin-top: 28px;
+  }
+  .next-issue {
+    border-top: 1px solid var(--rule);
+    margin-top: 32px;
+    padding-top: 18px;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--light);
+  }
+
+  /* ── FOOTER ── */
+  .site-footer {
+    border-top: 1px solid var(--rule);
+    padding: 20px 0 0;
+    margin-top: 60px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: var(--light);
+    text-align: center;
+  }
+  .site-footer a { color: var(--gold); text-decoration: none; }
+
+  hr.rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 44px 0;
+  }
+
+  @media (max-width: 480px) {
+    body { font-size: 16px; }
+    .page-wrap { padding: 0 16px 60px; }
+    blockquote.pull { padding: 16px 18px; font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <header class="site-header">
+    <span class="pub-name">Ekurhuleni Underground</span>
+    <span class="issue-meta">Issue 11 &nbsp;|&nbsp; 2 April 2026</span>
+  </header>
+
+  <div class="masthead">
+    <h1>EKURHULENI<span>UNDERGROUND</span></h1>
+    <p class="tagline">The hidden systems of the East Rand</p>
+  </div>
+
+  <div class="easter-note">Easter Edition — Published Thursday 2 April 2026 &nbsp;|&nbsp; <span>Regular schedule resumes 9 April</span></div>
+
+  <!-- THEME ANALYSIS -->
+  <div class="label">Theme Analysis — Issue 11</div>
+  <div class="theme-block">
+    <h2>The Alberton South Chemical Pocket</h2>
+    <p class="sub">Why this theme matters for the long-term economic story of Ekurhuleni</p>
+    <p>The theme of the Alberton South Chemical Pocket is not a story about factories. It is a story about invisibility — about how an economy can be both essential and unrecognised, producing the inputs that every other industry depends on while remaining entirely outside the frame through which most people understand their city.</p>
+    <p><strong>The deep story:</strong> how the industrial belt running south of Alberton's CBD — along the R59 toward Vereeniging and the Hennie van Till Street corridor — has quietly become one of southern Africa's most productive specialty chemicals districts, with operations ranging from pharmaceutical active ingredient production to corrosion-resistant coatings manufacture, almost none of it legible to the communities that surround it.</p>
+    <p><strong>Three supporting micro-stories:</strong> the generic pharmaceutical ingredient producers whose unmarked facilities supply drug manufacturers across SADC; the specialty industrial cleaning and process chemical formulators who dominate the supply chains of Gauteng's mining and food processing sectors; and the corrosion protection coating workshops that have grown in step with Ekurhuleni's pipeline and mining infrastructure.</p>
+    <p><strong>The overlooked place:</strong> the Hennie van Till Street and New Road industrial belt in Alberton South — a two-kilometre concentration of chemical manufacturing operations that collectively constitute a significant node in southern Africa's specialty chemicals supply chain, and that almost no one outside the industry could describe.</p>
+    <p><strong>The interesting statistic:</strong> South Africa's chemical sector contributes approximately R170 billion annually to GDP, and the Alberton-Germiston industrial belt accounts for a disproportionate share of its specialty and process chemicals segment — a share that no official economic profile of Ekurhuleni currently measures or claims.</p>
+  </div>
+
+  <hr class="rule">
+
+  <!-- ISSUE TITLE -->
+  <div class="label">Weekly Issue — 2 April 2026</div>
+  <div class="issue-title">
+    <h2>The Invisible Synthesis</h2>
+    <p class="deck">Inside Alberton South's chemical manufacturing district — where the essential preconditions of everyday life are made quietly, at scale, and entirely out of sight.</p>
+  </div>
+
+  <!-- 1. EDITORIAL -->
+  <div class="label">1. Editorial</div>
+  <div class="section-head">What the Buildings Don't Tell You</div>
+
+  <p class="body">Drive south from Alberton's CBD on Voortrekker Road and the city changes register almost without warning. The retail strip — the chain stores, the fast-food outlets, the hardware warehouses — gives way, within a few hundred metres, to a different kind of architecture altogether: lower, wider buildings set back from the road behind perimeter fencing, their facades offering nothing to the passing eye except a company name in modest lettering and, sometimes, a small hazmat diamond on the gate. No windows at street level. No signage explaining the product. Just a building, doing something.</p>
+
+  <p class="body">I have been curious about those buildings for some time. What draws attention is precisely their blankness. A factory making furniture or clothing leaves traces — a smell, a sound, the shapes of its product visible in a loading bay. The buildings of Alberton South leave almost nothing. The trucks that enter and leave carry sealed tanks, labelled drums, palletised containers of liquid or powder. The workers who arrive in the mornings wear overalls that give no industry away. And yet the operations inside — specialty solvents, industrial process chemicals, pharmaceutical active ingredients, corrosion-resistant coatings — constitute one of the most consequential manufacturing clusters in the region. They make the inputs that other industries need in order to function: the invisible preconditions for things the economy actually notices.</p>
+
+  <p class="body">The chemical manufacturing pocket of Alberton South does not feature in any economic profile of Ekurhuleni that I have been able to find. It is too diffuse to attract the attention given to the logistics belt around OR Tambo, too technical to feature in the industrial profiles municipalities produce for investors. And yet the Hennie van Till Street corridor and the wider R59 industrial fringe together house a significant density of chemical manufacturers: registered producers supplying multinational clients across SADC alongside small specialist formulators who serve a handful of long-term customers and have no web presence to speak of.</p>
+
+  <p class="body">What interests me is not the chemistry itself — though the chemistry is genuinely interesting — but the question the cluster raises about how we understand the economy of a place. Ekurhuleni is described as a logistics and manufacturing hub. Both descriptions are accurate. But they consistently miss the layer of chemistry that underlies both: the coatings that protect infrastructure, the solvents that clean industrial equipment, the generic pharmaceutical compounds that stock clinics from Johannesburg to Lusaka. The invisible synthesis. The economy behind the economy. This issue is an attempt to bring it into view.</p>
+
+  <!-- 2. LONG ESSAY -->
+  <div class="label">2. The Long Essay</div>
+  <div class="section-head">The Chemistry Beneath the City</div>
+
+  <div class="essay-section-label">Section I — The Observation</div>
+  <p class="body">Walk the length of Hennie van Till Street on a Tuesday morning — a street most Alberton residents could not locate on a map — and what you encounter is a compressed lesson in how manufacturing actually works at the input level. On your left, a facility producing specialty solvents for the printing and coatings industries, its delivery trucks loaded with sealed IBCs heading toward customers in Johannesburg, Durban, and, on certain days, Harare. On your right, an operation that blends and packages industrial degreasers for automotive and mining maintenance applications, its raw materials arriving from two different chemical importers in Durban whose own names you would not recognise. Further along, a building with no name visible from the road at all, producing a proprietary product — a corrosion inhibitor formulation — that its founder developed twenty years ago from a modified mining reagent recipe and has been quietly improving ever since.</p>
+
+  <p class="body">None of these operations is large in the conventional sense. None is listed on any exchange. None has appeared in a business magazine profile or a mayoral investment announcement. And yet each is, in the precise meaning of the term, irreplaceable: serving customers who depend on them for specific formulations that major chemical distributors will not produce at small minimum order quantities, and that importing from Europe or Asia would make uneconomic. They exist because there is a permanent, stable demand for chemical inputs at a level of specificity and a scale of volume that the market's large players systematically underserve. Into that gap, quietly and without fanfare, these operators moved.</p>
+
+  <blockquote class="pull">The chemical belt of Alberton South does not make products. It makes the conditions under which other products become possible.</blockquote>
+
+  <div class="essay-section-label">Section II — The Hidden System</div>
+  <p class="body">The hidden economy of the Alberton South chemical pocket operates across three distinct registers. The first and most formally visible is the registered specialty chemicals sector: companies holding the relevant SABS certifications, SANS compliance documentation, and in some cases pharmaceutical manufacturing licences, that supply branded and generic drug manufacturers, food processors, and mining houses with specific input chemicals. These operations are small by global standards but significant by local ones. A facility producing active pharmaceutical ingredients for a generic drug manufacturer in Midrand — ingredients that will eventually appear in antiretrovirals distributed through the public health system — is performing an economic and social function that its street-level anonymity does not remotely suggest.</p>
+
+  <p class="body">The second register is the formulator economy: companies that do not synthesise chemicals from base compounds but combine, dilute, stabilise, and package them for specific end uses. A formulator producing a cleaning chemical blend for a large food processing client does not need a chemistry degree on staff; it needs precise process knowledge, consistent raw material sourcing, and a deep understanding of its customer's operational requirements. This is knowledge built over years of relationship and iteration. The formulator in a modest Alberton South unit who has been supplying the same mining client with a specific degreasing compound for fifteen years possesses intellectual property — in the practical sense of accumulated, tested, relationship-embedded knowledge — that no database has recorded and no competitor has been able to replicate cheaply.</p>
+
+  <p class="body">The third register is the micro-operator ecology that surrounds the registered sector: small chemical trading and blending operations, sometimes operating from domestic-scale premises, that source chemical inputs through informal networks and supply local end users — workshops, small manufacturers, agricultural operations — at quantities and prices that formal distributors cannot match. These operations exist in a genuinely ambiguous regulatory space. Some are fully compliant. Others operate in the grey zones that South Africa's chemical regulatory framework, designed for large industrial producers, was never quite calibrated to address. Their economic contribution, like that of so many informal layers in the Ekurhuleni economy, is real and unmeasured.</p>
+
+  <div class="essay-section-label">Section III — The Broader Insight</div>
+  <p class="body">What the Alberton South chemical pocket reveals is something that urban economists tend to overlook when they construct their pictures of post-industrial cities: the persistence and economic importance of input manufacturing. The conventional story of deindustrialisation is that cities move from making things to providing services, and that the factories, where they survive, produce finished goods for consumers. The Alberton South story is different. The chemical cluster does not produce consumer goods. It produces the conditions under which other things can be produced. It sits at the upstream end of supply chains that touch almost every sector of the economy — mining, pharmaceutical, food processing, manufacturing, construction — and its health or decline ripples outward in ways that are difficult to trace but impossible to replace.</p>
+
+  <p class="body">This matters for Ekurhuleni's long-term economic story because it suggests that the region's industrial complexity is considerably greater than its visible profile implies. An economy that can formulate specialty corrosion inhibitors for pipeline infrastructure, produce pharmaceutical active ingredients for SADC distribution, and blend process chemicals for food-grade applications is an economy with a diversified technical skill base — one that is not simply dependent on the throughput of a single port or the continued operation of a single large employer. That depth is an asset. It is simply not an asset that anyone has thought to map.</p>
+
+  <div class="essay-section-label">Section IV — The Antifragile Angle</div>
+  <p class="body">The chemical cluster of Alberton South has demonstrated, across a turbulent decade of rand volatility, energy instability, and supply chain disruption, a pattern that should by now be familiar to readers of this publication: it grows stronger under pressure. When the rand fell sharply in 2015 and 2020, imported specialty chemicals became significantly more expensive. Local formulators and producers, whose cost bases were rand-denominated, became correspondingly more competitive. Customers who had previously imported specific formulations from Germany or the Netherlands began sourcing locally. The shocks that hurt global supply chains created openings for Alberton South's operators to deepen and extend their customer relationships.</p>
+
+  <p class="body">The same logic applied during the COVID-19 disruptions of 2020 and 2021, when global shipping delays and container shortages made just-in-time chemical import strategies unreliable. Manufacturers who had considered local sourcing as a fallback option converted it into primary strategy. For the specialty formulators of Alberton South, the crisis was not a disruption — it was a demand surge. Several operations that had been running at modest capacity for years found themselves expanding their workforce and their physical plant during the same period when the formal economy was contracting. The antifragile logic holds: a cluster built on specific knowledge, long-term relationships, and the ability to serve demand that large operators cannot economically reach is a cluster that benefits from the volatility that damages everyone else.</p>
+
+  <!-- 3. HIDDEN ECONOMY -->
+  <div class="label">3. The Hidden Economy</div>
+  <div class="section-head">Three Operations Nobody Is Watching</div>
+
+  <div class="micro">
+    <div class="micro-title"><span>1.</span> The API Producers</div>
+    <div class="micro-loc">Alberton South Industrial Strip</div>
+    <p class="body">In a licensed pharmaceutical manufacturing facility whose exterior offers no indication of what it contains, a small operation produces active pharmaceutical ingredients — the chemical compounds that give medicines their therapeutic effect — for supply to generic drug manufacturers across southern Africa. The facility holds the relevant Good Manufacturing Practice certification, employs chemists and quality technicians who came out of the formal pharmaceutical industry, and operates at volumes that make it invisible to the global pharmaceutical supply chain while being quietly indispensable to the regional one. Its customers produce antiretrovirals, antihypertensives, and analgesics that reach public sector clinics from Johannesburg to Lusaka. The facility's name does not appear on any of those products.</p>
+  </div>
+
+  <div class="micro">
+    <div class="micro-title"><span>2.</span> The Process Chemical Formulators</div>
+    <div class="micro-loc">Hennie van Till Street / New Road Corridor</div>
+    <p class="body">Along the Hennie van Till corridor, a cluster of specialty chemical formulators has built durable businesses supplying the mining and food processing sectors with exactly the cleaning agents, pH adjusters, and process chemicals their operations require — in the correct concentrations, in the correct packaging, on the delivery schedules that large chemical distributors consider uneconomic to maintain. The formulators' competitive advantage is not price alone. It is the accumulated operational knowledge of fifteen or twenty years of working with the same client, adjusting formulations in response to changes in that client's process equipment or water chemistry, being available by phone when something goes wrong on a Saturday. That kind of embedded service relationship is not something a global distributor can replicate at any price.</p>
+  </div>
+
+  <div class="micro">
+    <div class="micro-title"><span>3.</span> The Corrosion Protection Workshops</div>
+    <div class="micro-loc">R59 / Klipriver Industrial Zone</div>
+    <p class="body">South of Alberton, in the industrial zone straddling the R59 toward Kliprivier, a network of specialty coating and corrosion protection workshops has grown in step with the infrastructure investment cycle of the broader Ekurhuleni economy. These operations apply — and in some cases formulate — corrosion-resistant coatings for steel pipelines, mining infrastructure, storage tanks, and structural steelwork. The coating chemistry they use draws directly on the region's accumulated knowledge of the mineral processing environment: the specific corrosion challenges posed by acid mine drainage, high-sulphur soils, and industrial wastewater that are the legacy of a century of gold extraction. Their product knowledge is, in this sense, a chemical translation of the landscape's own history.</p>
+  </div>
+
+  <!-- 4. MAP -->
+  <div class="label">4. The Map of the Week</div>
+  <div class="section-head">Hennie van Till Street, Alberton South</div>
+  <div class="coords">26°16′S &nbsp;28°7′E</div>
+
+  <p class="body">Roughly two kilometres. That is the working length of the Hennie van Till Street and New Road industrial corridor running south of Alberton's CBD, in which the chemical pocket's operations are most densely concentrated. In those two kilometres you will find: specialty chemical formulators whose delivery vehicles serve clients as far as Zimbabwe; pharmaceutical manufacturers whose output reaches clinics across four countries; coating and corrosion protection workshops applying chemistry developed for conditions specific to this landscape; and small chemical trading operations whose supply networks extend informally through a web of suppliers, brokers, and customers that no directory has charted.</p>
+
+  <p class="body">What you will not find is any public indication of what any of it produces. The buildings are purposefully closed — not from secrecy but from the orientation of an industry that has no consumer-facing dimension, no retail presence, and no reason to communicate its existence to anyone who has not already sought it out. To drive Hennie van Till Street at midday, when the chemical delivery trucks are loading at the bays and the quality control technicians are moving between buildings, is to understand that the visible economy and the essential economy are frequently not the same thing.</p>
+
+  <!-- 5. NUMBER -->
+  <div class="label">5. The East Rand Number</div>
+  <div class="big-number">
+    <span class="num">R170bn</span>
+    <span class="num-label">South Africa's annual chemical sector contribution to GDP — with the Alberton-Germiston belt accounting for a disproportionate but unmeasured share of specialty production</span>
+  </div>
+
+  <p class="body">South Africa's chemical and chemical products sector contributes approximately R170 billion to GDP annually, making it one of the country's largest manufacturing subsectors. The Gauteng component of this — and specifically the Alberton-Germiston-Springs industrial belt — accounts for a significant share of the specialty and process chemicals segment: the formulated products, blended materials, and active ingredients that feed downstream manufacturing rather than reaching consumers directly. This share has never been comprehensively measured at a municipal level. Ekurhuleni's economic development profiles do not claim it, and no investment promotion document leads with it. The contribution exists regardless. Numbers that are not counted do not thereby cease to matter.</p>
+
+  <!-- 6. CLOSING -->
+  <div class="label">6. Closing Reflection</div>
+  <div class="section-head">The Preconditions of Everything</div>
+
+  <p class="body">There is a useful thought experiment for understanding what Alberton South's chemical pocket actually does: imagine, for a single week, removing from the supply chain all of the specialty chemicals, active pharmaceutical ingredients, process cleaning agents, and corrosion inhibitors produced within a five-kilometre radius of Hennie van Till Street. The mining operations that depend on those process chemicals would begin to degrade. The generic drug manufacturers whose APIs come from the corridor would face a supply gap. The food processing plants whose cleaning protocols depend on specific blended formulations would halt their lines. The infrastructure — pipelines, tanks, structural steel — that the coating workshops protect would begin its slow return to rust.</p>
+
+  <p class="body">None of this would make the front page. The chemical cluster is not famous enough for its absence to be attributed. But the cascading effect would be felt across the region's economy in ways that would eventually become impossible to ignore. That is what it means to be essential and invisible at the same time. The question for Ekurhuleni — the question worth sitting with, not just today but in every planning cycle — is how long a city can afford to be unaware of what makes it work.</p>
+
+  <p class="byline">— Ekurhuleni Underground, 2 April 2026</p>
+
+  <p class="next-issue">Next issue: <strong>The Boksburg Water Network</strong> — the hidden infrastructure of dams, canals, and pumping systems that quietly supplies Ekurhuleni's industrial water demand, and the informal economy that has grown around its margins.</p>
+
+  <footer class="site-footer">
+    <p>The hidden systems of the East Rand &nbsp;|&nbsp; <a href="https://1906reblabs.github.io/ekurhuleni-underground/">1906reblabs.github.io/ekurhuleni-underground</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
