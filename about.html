@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Ekurhuleni Underground</title>
+<meta name="description" content="About Ekurhuleni Underground — who we are, what we believe, and why the East Rand deserves serious economic journalism.">
+<style>
+  :root {
+    --gold: #B8963E;
+    --dark: #1A1A1A;
+    --mid: #555555;
+    --light: #888888;
+    --bg: #FAFAF7;
+    --rule: #DDDDDD;
+    --tint: #F5F0E8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--dark);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 17px;
+    line-height: 1.75;
+  }
+  .page-wrap { max-width: 720px; margin: 0 auto; padding: 0 24px 80px; }
+
+  /* TOP NAV */
+  .top-nav {
+    border-bottom: 1px solid var(--rule);
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .top-nav .nav-brand {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    color: var(--gold);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .top-nav .nav-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+  .top-nav .nav-links a {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--mid);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .top-nav .nav-links a:hover,
+  .top-nav .nav-links a.active { color: var(--gold); }
+
+  /* PAGE HEADER */
+  .page-header {
+    padding: 48px 0 32px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .page-header .eyebrow {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .page-header h1 {
+    font-family: Arial, sans-serif;
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 900;
+    color: var(--dark);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .page-header .deck {
+    font-style: italic;
+    font-size: 19px;
+    color: var(--mid);
+    line-height: 1.55;
+  }
+
+  /* BODY */
+  .section-label {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 48px;
+    margin-bottom: 10px;
+  }
+  .section-rule {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--dark);
+    border-bottom: 3px solid var(--gold);
+    padding-bottom: 8px;
+    margin-bottom: 22px;
+  }
+  p.body { margin-bottom: 20px; text-align: justify; }
+
+  /* PULL QUOTE */
+  blockquote.pull {
+    border-top: 3px solid var(--gold);
+    border-bottom: 3px solid var(--gold);
+    padding: 22px 32px;
+    margin: 36px 0;
+    font-style: italic;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--gold);
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  /* PRINCIPLES LIST */
+  .principles {
+    list-style: none;
+    margin: 0 0 24px 0;
+  }
+  .principles li {
+    border-top: 1px solid var(--rule);
+    padding: 18px 0;
+  }
+  .principles li:last-child { border-bottom: 1px solid var(--rule); }
+  .principles .p-label {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+  .principles p { color: var(--mid); font-size: 16px; }
+
+  /* TEAM BLOCK */
+  .info-block {
+    background: var(--tint);
+    border-left: 4px solid var(--gold);
+    padding: 24px 28px;
+    margin: 32px 0;
+    font-size: 16px;
+    color: var(--mid);
+    line-height: 1.7;
+  }
+  .info-block strong { color: var(--dark); }
+
+  /* FOOTER */
+  .site-footer {
+    border-top: 1px solid var(--rule);
+    padding: 24px 0 0;
+    margin-top: 60px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: var(--light);
+    text-align: center;
+  }
+  .site-footer a { color: var(--gold); text-decoration: none; }
+  .site-footer a:hover { text-decoration: underline; }
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+  .footer-copy { margin-top: 10px; font-size: 11px; }
+
+  @media (max-width: 480px) {
+    body { font-size: 16px; }
+    .page-wrap { padding: 0 16px 60px; }
+    blockquote.pull { padding: 16px 18px; font-size: 18px; }
+    .top-nav .nav-links { gap: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <nav class="top-nav">
+    <a href="index.html" class="nav-brand">Ekurhuleni Underground</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="index.html#archive">Archive</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-header">
+    <div class="eyebrow">About This Publication</div>
+    <h1>The City Worth Paying Attention To</h1>
+    <p class="deck">Ekurhuleni Underground exists because Ekurhuleni deserves serious economic journalism — and because the most important stories about a city are rarely the ones it tells about itself.</p>
+  </div>
+
+  <!-- MISSION -->
+  <div class="section-label">Our Mission</div>
+  <div class="section-rule">Why This Publication Exists</div>
+
+  <p class="body">Ekurhuleni Metropolitan Municipality is, by almost any industrial measure, one of the most significant economic zones on the African continent. It is the logistics backbone of a region of 16 million people. It houses the continent's largest air cargo gateway. Its mine dumps contain more reclaimable gold tailings than anywhere else on earth. Its township economies process goods, capital, and labour at a scale that dwarfs many provincial cities. And yet it is among the least-reported, least-analysed, least-understood metropolitan economies in South Africa.</p>
+
+  <p class="body">Ekurhuleni Underground is an attempt to close that gap — not through news reporting or political commentary, but through the patient, systematic work of economic explanation. We publish one deep read every week. Each issue focuses on a hidden system: a supply chain that nobody has mapped, an informal economy that nobody has counted, an infrastructure dependency that nobody has named. We write for the resident who drives past the cold-storage corridor on the N12 every morning and has never been told what it does. We write for the planner who knows the formal economy but cannot see the informal layer beneath it. We write for anyone who suspects that their city is more consequential than the conversation about it suggests.</p>
+
+  <blockquote class="pull">We do not report events. We reveal systems.</blockquote>
+
+  <p class="body">The publication is deliberately not a news outlet. We do not cover crime, municipal announcements, traffic incidents, or political developments. We cover the economic geography of a place — the slow, structural forces that explain why things are the way they are, and what they might become. Our working assumption is that the most important things happening in Ekurhuleni are not the things that make the newspapers. They are the things that have been there, quietly, all along — waiting for someone to look.</p>
+
+  <!-- EDITORIAL PRINCIPLES -->
+  <div class="section-label">Editorial Principles</div>
+  <div class="section-rule">What We Believe</div>
+
+  <ul class="principles">
+    <li>
+      <div class="p-label">Systems over events</div>
+      <p>Every issue explains a system — a set of relationships, incentives, and flows that persist over time. We are interested in why things exist, not what happened yesterday.</p>
+    </li>
+    <li>
+      <div class="p-label">Non-obvious over obvious</div>
+      <p>If the insight could be found in a newspaper, we have not gone deep enough. We pursue the layer below the visible — the informal economy beneath the formal one, the infrastructure dependency behind the headline industry.</p>
+    </li>
+    <li>
+      <div class="p-label">Local and grounded</div>
+      <p>Every issue is anchored in a specific place, a specific corridor, a specific community of economic actors. We name streets. We give coordinates. We describe what you would see, hear, and notice if you went there.</p>
+    </li>
+    <li>
+      <div class="p-label">Antifragile perspective</div>
+      <p>We are particularly interested in the systems that grow stronger under pressure — the informal networks that expand when the formal economy contracts, the hidden infrastructure that becomes indispensable precisely when official infrastructure fails. We believe these systems contain lessons that urban economics has not adequately absorbed.</p>
+    </li>
+    <li>
+      <div class="p-label">Timeless, not timely</div>
+      <p>We write to be read years from now. We avoid news hooks, seasonal references, and anything that will date the analysis. The question we ask before publishing is not "is this current?" but "is this true?"</p>
+    </li>
+    <li>
+      <div class="p-label">No advertising influence</div>
+      <p>Editorial decisions are made entirely on the basis of analytical interest. We do not accept advertising, sponsored content, or placement fees. No commercial relationship influences what we write or how we write it.</p>
+    </li>
+  </ul>
+
+  <!-- GEOGRAPHIC SCOPE -->
+  <div class="section-label">Geographic Scope</div>
+  <div class="section-rule">The Territory We Cover</div>
+
+  <p class="body">Ekurhuleni Underground covers the full extent of Ekurhuleni Metropolitan Municipality — a territory of approximately 1,975 square kilometres that stretches from the eastern perimeter of OR Tambo International Airport to the old gold-mining towns of the Far East Rand. Our primary beat encompasses Alberton, Benoni, Boksburg, Brakpan, Kempton Park, Germiston, Springs, Nigel, Katlehong, Vosloorus, Daveyton, Kwa-Thema, Tembisa, Tsakane, Duduza, and Thokoza.</p>
+
+  <p class="body">We anchor our macro analysis around the economic corridors and infrastructure nodes that structure the region: the OR Tambo logistics belt, the Alberton-Germiston manufacturing ridge, the Springs-Nigel mining heritage corridor, and the township economies that surround and interpenetrate the formal industrial zones. We occasionally extend our perspective to the broader Witwatersrand Basin when the system under analysis requires it — but we always return to Ekurhuleni as our primary frame.</p>
+
+  <!-- ABOUT 1906 REBLABS -->
+  <div class="section-label">Publisher</div>
+  <div class="section-rule">About 1906 Reblabs</div>
+
+  <div class="info-block">
+    <p><strong>Ekurhuleni Underground</strong> is published by <strong>1906 Reblabs</strong>, an independent research and publishing studio focused on urban economic intelligence in southern Africa. The name references 1906 — the year in which the post-war reconstruction of the Witwatersrand's industrial economy began in earnest, laying the foundations for the region that Ekurhuleni now encompasses.</p>
+    <p style="margin-top:14px;">1906 Reblabs does not seek to be a think tank, a consultancy, or an advocacy organisation. It is a publishing operation, and its output is evaluated on the quality of its analysis and writing, not on the policy outcomes it influences. We believe that clear, rigorous, grounded economic journalism is itself a form of urban development — that a city which understands itself more clearly is a city better positioned to make decisions about its own future.</p>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="section-label">Contact</div>
+  <div class="section-rule">Get in Touch</div>
+
+  <p class="body">We welcome correspondence from readers, researchers, and anyone with knowledge of the hidden systems of the East Rand. If you have a tip, a correction, or a story you think we should be covering, we want to hear from you. We are also willing to hear from organisations interested in supporting the publication's work, provided the terms of any such support are compatible with full editorial independence.</p>
+
+  <div class="info-block">
+    <p><strong>Publication:</strong> Ekurhuleni Underground</p>
+    <p><strong>Publisher:</strong> 1906 Reblabs</p>
+    <p><strong>Jurisdiction:</strong> South Africa</p>
+    <p><strong>Website:</strong> <a href="https://1906reblabs.github.io/ekurhuleni-underground/" style="color:var(--gold);">1906reblabs.github.io/ekurhuleni-underground</a></p>
+  </div>
+
+  <footer class="site-footer">
+    <p>The hidden systems of the East Rand</p>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="index.html#archive">Archive</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+    </div>
+    <p class="footer-copy">© 2026 1906 Reblabs. Published weekly from Ekurhuleni, South Africa.</p>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ekurhuleni Underground — The hidden systems of the East Rand</title>
+<meta name="description" content="A weekly 20-minute read uncovering the economic geography, informal networks, and overlooked infrastructure of Ekurhuleni Metropolitan Municipality.">
 <style>
   :root {
     --gold: #B8963E;
@@ -24,27 +25,39 @@
   }
   .page-wrap { max-width: 720px; margin: 0 auto; padding: 0 24px 80px; }
 
-  /* HEADER */
-  .site-header {
-    border-bottom: 3px solid var(--gold);
-    padding: 14px 0 10px;
+  /* TOP NAV */
+  .top-nav {
+    border-bottom: 1px solid var(--rule);
+    padding: 10px 0;
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
   }
-  .pub-name {
+  .top-nav .nav-brand {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    color: var(--gold);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .top-nav .nav-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+  .top-nav .nav-links a {
     font-family: Arial, sans-serif;
     font-size: 12px;
     font-weight: 700;
-    letter-spacing: .12em;
-    color: var(--gold);
+    letter-spacing: .06em;
     text-transform: uppercase;
+    color: var(--mid);
+    text-decoration: none;
+    transition: color 0.15s;
   }
-  .issue-meta {
-    font-family: Arial, sans-serif;
-    font-size: 12px;
-    color: var(--light);
-  }
+  .top-nav .nav-links a:hover { color: var(--gold); }
 
   /* MASTHEAD */
   .masthead {
@@ -75,7 +88,7 @@
     line-height: 1.65;
   }
 
-  /* LATEST ISSUE */
+  /* LABELS */
   .label {
     font-family: Arial, sans-serif;
     font-size: 11px;
@@ -87,6 +100,7 @@
     margin-bottom: 12px;
   }
 
+  /* LATEST CARD */
   .latest-card {
     background: var(--tint);
     border-left: 4px solid var(--gold);
@@ -131,16 +145,9 @@
   }
 
   /* ARCHIVE LIST */
-  .archive-list {
-    list-style: none;
-    margin-top: 8px;
-  }
-  .archive-list li {
-    border-top: 1px solid var(--rule);
-  }
-  .archive-list li:last-child {
-    border-bottom: 1px solid var(--rule);
-  }
+  .archive-list { list-style: none; margin-top: 8px; }
+  .archive-list li { border-top: 1px solid var(--rule); }
+  .archive-list li:last-child { border-bottom: 1px solid var(--rule); }
   .archive-list a {
     display: flex;
     align-items: baseline;
@@ -184,7 +191,7 @@
   /* FOOTER */
   .site-footer {
     border-top: 1px solid var(--rule);
-    padding: 20px 0 0;
+    padding: 24px 0 0;
     margin-top: 60px;
     font-family: Arial, sans-serif;
     font-size: 12px;
@@ -192,22 +199,36 @@
     text-align: center;
   }
   .site-footer a { color: var(--gold); text-decoration: none; }
+  .site-footer a:hover { text-decoration: underline; }
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+  .footer-copy { margin-top: 10px; font-size: 11px; }
 
   @media (max-width: 480px) {
     body { font-size: 16px; }
     .page-wrap { padding: 0 16px 60px; }
     .latest-card { padding: 20px 18px; }
     .archive-list .arc-date { display: none; }
+    .top-nav .nav-links { gap: 14px; }
   }
 </style>
 </head>
 <body>
 <div class="page-wrap">
 
-  <header class="site-header">
-    <span class="pub-name">Ekurhuleni Underground</span>
-    <span class="issue-meta">Est. 2026</span>
-  </header>
+  <nav class="top-nav">
+    <a href="index.html" class="nav-brand">Ekurhuleni Underground</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#archive">Archive</a></li>
+    </ul>
+  </nav>
 
   <div class="masthead">
     <h1>EKURHULENI<span>UNDERGROUND</span></h1>
@@ -217,16 +238,27 @@
 
   <!-- LATEST ISSUE -->
   <div class="label">Latest Issue</div>
-  <a class="latest-card" href="issue11.html">
-    <div class="issue-num">Issue 11 &nbsp;·&nbsp; 2 April 2026 &nbsp;·&nbsp; Easter Edition</div>
-    <h2>The Invisible Synthesis</h2>
-    <p class="deck">Inside Alberton South's chemical manufacturing district — where the essential preconditions of everyday life are made quietly, at scale, and entirely out of sight.</p>
-    <span class="read-link">Read Issue 11 →</span>
+  <a class="latest-card" href="issue12.html">
+    <div class="issue-num">Issue 12 &nbsp;·&nbsp; 10 April 2026</div>
+    <h2>The Water That Industry Forgot</h2>
+    <p class="deck">How a century of mining left behind a hidden water economy — and why the East Rand's industrial survival depends on infrastructure that nobody officially manages.</p>
+    <span class="read-link">Read Issue 12 →</span>
   </a>
 
   <!-- ARCHIVE -->
-  <div class="label">All Issues</div>
+  <div class="label" id="archive">All Issues</div>
   <ul class="archive-list">
+
+    <li>
+      <a href="issue12.html">
+        <span class="arc-num">Issue 12</span>
+        <span class="arc-body">
+          <span class="arc-title">The Water That Industry Forgot</span>
+          <span class="arc-subtitle">The Boksburg Water Network — borehole operators, effluent traders, and the canal stewards keeping old infrastructure alive</span>
+        </span>
+        <span class="arc-date">10 Apr 2026</span>
+      </a>
+    </li>
 
     <li>
       <a href="issue11.html">
@@ -279,14 +311,22 @@
           <span class="arc-title">The Invisible Port</span>
           <span class="arc-subtitle">Airport Economy — how OR Tambo reorganised the economic geography of the East Rand</span>
         </span>
-        <span class="arc-date">06 Mar 2026</span>
+        <span class="arc-date">6 Mar 2026</span>
       </a>
     </li>
 
   </ul>
 
   <footer class="site-footer">
-    <p>The hidden systems of the East Rand &nbsp;|&nbsp; <a href="https://1906reblabs.github.io/ekurhuleni-underground/">1906reblabs.github.io/ekurhuleni-underground</a></p>
+    <p>The hidden systems of the East Rand</p>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="index.html#archive">Archive</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="https://1906reblabs.github.io/ekurhuleni-underground/">1906reblabs.github.io/ekurhuleni-underground</a>
+    </div>
+    <p class="footer-copy">© 2026 1906 Reblabs. Published weekly from Ekurhuleni, South Africa.</p>
   </footer>
 
 </div>
