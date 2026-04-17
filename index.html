@@ -65,9 +65,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Remove 300ms tap delay on all interactive elements */
 a, button, [role="button"] { touch-action: manipulation; }
-
 img { max-width: 100%; height: auto; display: block; }
 
 /* ============================================================
@@ -83,7 +81,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 /* ============================================================
-   TOP NAV  — hamburger on mobile, inline on >=640px
+   TOP NAV
    ============================================================ */
 .top-nav {
   border-bottom: 1px solid var(--rule);
@@ -134,18 +132,11 @@ img { max-width: 100%; height: auto; display: block; }
   transform-origin: center;
   pointer-events: none;
 }
-.nav-toggle[aria-expanded="true"] span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-.nav-toggle[aria-expanded="true"] span:nth-child(2) {
-  opacity: 0;
-  transform: scaleX(0);
-}
-.nav-toggle[aria-expanded="true"] span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* Nav links — hidden dropdown on mobile */
+/* Nav links — dropdown on mobile */
 .nav-links {
   display: none;
   position: absolute;
@@ -288,9 +279,8 @@ img { max-width: 100%; height: auto; display: block; }
 .archive-list {
   list-style: none;
   margin-top: 8px;
-  /* Performance: skip layout/paint for off-screen list items */
   content-visibility: auto;
-  contain-intrinsic-size: 0 480px;
+  contain-intrinsic-size: 0 900px;
 }
 .archive-list li { border-top: 1px solid var(--rule); }
 .archive-list li:last-child { border-bottom: 1px solid var(--rule); }
@@ -342,7 +332,7 @@ img { max-width: 100%; height: auto; display: block; }
   color: var(--light);
   white-space: nowrap;
   flex-shrink: 0;
-  display: none; /* shown on wider screens */
+  display: none;
 }
 
 /* ============================================================
@@ -357,12 +347,7 @@ img { max-width: 100%; height: auto; display: block; }
   color: var(--light);
   text-align: center;
 }
-.site-footer a {
-  color: var(--gold);
-  text-decoration: none;
-  display: inline;
-  min-height: 0;
-}
+.site-footer a { color: var(--gold); text-decoration: none; }
 .site-footer a:hover { text-decoration: underline; }
 .footer-links {
   display: flex;
@@ -417,12 +402,7 @@ img { max-width: 100%; height: auto; display: block; }
   display: block;
   margin-bottom: 5px;
 }
-.cb-text a {
-  color: var(--gold);
-  text-decoration: underline;
-  display: inline;
-  min-height: 0;
-}
+.cb-text a { color: var(--gold); text-decoration: underline; }
 .cb-actions {
   display: flex;
   flex-wrap: wrap;
@@ -443,18 +423,9 @@ img { max-width: 100%; height: auto; display: block; }
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
 }
-.cb-accept {
-  background: var(--gold);
-  color: #fff;
-  min-width: 90px;
-}
+.cb-accept { background: var(--gold); color: #fff; min-width: 90px; }
 .cb-accept:hover { background: #9a7c30; }
-.cb-decline {
-  background: transparent;
-  color: #DDD8CF;
-  border: 1px solid #444;
-  min-width: 90px;
-}
+.cb-decline { background: transparent; color: #DDD8CF; border: 1px solid #444; min-width: 90px; }
 .cb-decline:hover { border-color: var(--gold); color: var(--gold); }
 .cb-policy {
   background: transparent;
@@ -470,10 +441,8 @@ img { max-width: 100%; height: auto; display: block; }
 .cb-policy:hover { color: var(--gold); }
 
 /* ============================================================
-   RESPONSIVE  — proper mobile-first min-width breakpoints
+   RESPONSIVE
    ============================================================ */
-
-/* ≥ 480px: larger text, more padding */
 @media (min-width: 480px) {
   body { font-size: 17px; }
   .page-wrap { padding: 0 24px 80px; }
@@ -494,7 +463,6 @@ img { max-width: 100%; height: auto; display: block; }
   .cb-inner { flex-direction: row; align-items: center; }
 }
 
-/* ≥ 640px: inline nav, show archive dates */
 @media (min-width: 640px) {
   .nav-toggle { display: none; }
   .nav-links {
@@ -519,18 +487,11 @@ img { max-width: 100%; height: auto; display: block; }
   .archive-list .arc-date { display: block; }
 }
 
-/* ≥ 720px: max-width breathing room */
-@media (min-width: 720px) {
-  .page-wrap { padding-left: 24px; padding-right: 24px; }
-}
-
-/* Hover-only transitions (no hover jank on touch) */
 @media (hover: none) {
   .latest-card:hover { background: var(--tint); }
   .archive-list a:hover { background: transparent; padding-left: 4px; }
 }
 
-/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -539,7 +500,6 @@ img { max-width: 100%; height: auto; display: block; }
   }
 }
 
-/* System dark mode */
 @media (prefers-color-scheme: dark) {
   :root {
     --bg:         #111110;
@@ -553,7 +513,6 @@ img { max-width: 100%; height: auto; display: block; }
   #cookie-banner { background: #0E0E0D; }
 }
 
-/* Print */
 @media print {
   #cookie-banner, .nav-toggle { display: none !important; }
   .page-wrap { padding: 0; }
@@ -596,16 +555,27 @@ img { max-width: 100%; height: auto; display: block; }
 
   <!-- LATEST ISSUE -->
   <div class="label">Latest Issue</div>
-  <a class="latest-card" href="issue12.html">
-    <div class="issue-num">Issue 12 &nbsp;·&nbsp; 10 April 2026</div>
-    <h2>The Water That Industry Forgot</h2>
-    <p class="deck">How a century of mining left behind a hidden water economy — and why the East Rand's industrial survival depends on infrastructure that nobody officially manages.</p>
-    <span class="read-link" aria-hidden="true">Read Issue 12 →</span>
+  <a class="latest-card" href="issue13.html">
+    <div class="issue-num">Issue 13 &nbsp;·&nbsp; 17 April 2026</div>
+    <h2>The Junction That Doesn't Sleep</h2>
+    <p class="deck">How the Germiston rail node became the quiet logistics backbone of the East Rand's freight economy — and what moves through it that no timetable lists.</p>
+    <span class="read-link" aria-hidden="true">Read Issue 13 →</span>
   </a>
 
   <!-- ARCHIVE -->
   <div class="label" id="archive">All Issues</div>
   <ul class="archive-list" role="list">
+
+    <li>
+      <a href="issue13.html">
+        <span class="arc-num">Issue 13</span>
+        <span class="arc-body">
+          <span class="arc-title">The Junction That Doesn't Sleep</span>
+          <span class="arc-subtitle">The Germiston Rail Node — wagon brokers, siding salvagers, and the platform traders who run on train time</span>
+        </span>
+        <span class="arc-date">17 Apr 2026</span>
+      </a>
+    </li>
 
     <li>
       <a href="issue12.html">
@@ -670,6 +640,39 @@ img { max-width: 100%; height: auto; display: block; }
           <span class="arc-subtitle">Airport Economy — how OR Tambo reorganised the economic geography of the East Rand</span>
         </span>
         <span class="arc-date">6 Mar 2026</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="issue6.html">
+        <span class="arc-num">Issue 6</span>
+        <span class="arc-body">
+          <span class="arc-title">The Parallel Grid</span>
+          <span class="arc-subtitle">The Shadow Energy Infrastructure — how Ekurhuleni's industry built its own electricity network during the load-shedding years</span>
+        </span>
+        <span class="arc-date">27 Feb 2026</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="issue5.html">
+        <span class="arc-num">Issue 5</span>
+        <span class="arc-body">
+          <span class="arc-title">The Taxi Republic</span>
+          <span class="arc-subtitle">The Rank Economy — routes, rights, and the private governance system that moves a million people a day</span>
+        </span>
+        <span class="arc-date">20 Feb 2026</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="issue4.html">
+        <span class="arc-num">Issue 4</span>
+        <span class="arc-body">
+          <span class="arc-title">The Landlords Nobody Counted</span>
+          <span class="arc-subtitle">The Backyard Economy — the shadow property market building household wealth across Ekurhuleni's townships</span>
+        </span>
+        <span class="arc-date">13 Feb 2026</span>
       </a>
     </li>
 
@@ -740,7 +743,6 @@ img { max-width: 100%; height: auto; display: block; }
       navLinks.classList.toggle('is-open', !open);
     });
 
-    /* Close when a link is tapped */
     navLinks.addEventListener('click', function (e) {
       if (e.target.tagName === 'A') {
         toggle.setAttribute('aria-expanded', 'false');
@@ -749,7 +751,6 @@ img { max-width: 100%; height: auto; display: block; }
       }
     });
 
-    /* Close on outside tap / click */
     document.addEventListener('click', function (e) {
       if (!toggle.contains(e.target) && !navLinks.contains(e.target)) {
         toggle.setAttribute('aria-expanded', 'false');
@@ -757,7 +758,6 @@ img { max-width: 100%; height: auto; display: block; }
       }
     });
 
-    /* Close on Escape */
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') {
         toggle.setAttribute('aria-expanded', 'false');
@@ -768,7 +768,7 @@ img { max-width: 100%; height: auto; display: block; }
   }
 
   /* ─── POPIA cookie / data consent banner ─── */
-  var CONSENT_KEY = 'eu_data_consent_v1'; /* 'accepted' | 'declined' */
+  var CONSENT_KEY = 'eu_data_consent_v1';
   var banner   = document.getElementById('cookie-banner');
   var btnOk    = document.getElementById('cb-accept');
   var btnNope  = document.getElementById('cb-decline');
@@ -790,7 +790,6 @@ img { max-width: 100%; height: auto; display: block; }
     }, 240);
   }
 
-  /* Show only if no prior decision recorded */
   if (!readConsent() && banner) {
     setTimeout(function () {
       banner.classList.add('is-visible');
@@ -800,10 +799,9 @@ img { max-width: 100%; height: auto; display: block; }
     }, 900);
   }
 
-  if (btnOk)   btnOk.addEventListener('click',   function () { saveConsent('accepted');  closeBanner(); });
-  if (btnNope) btnNope.addEventListener('click',  function () { saveConsent('declined');  closeBanner(); });
+  if (btnOk)   btnOk.addEventListener('click',  function () { saveConsent('accepted'); closeBanner(); });
+  if (btnNope) btnNope.addEventListener('click', function () { saveConsent('declined'); closeBanner(); });
 
-  /* Escape closes (and records 'declined') */
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && banner && banner.classList.contains('is-visible')) {
       saveConsent('declined');
