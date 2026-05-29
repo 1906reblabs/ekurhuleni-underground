@@ -1,83 +1,42 @@
-# .github/workflows/build.yml
-#
-# Ekurhuleni Underground — Auto-Build Workflow
-# ─────────────────────────────────────────────
-# Triggers whenever a Markdown issue file, template, or build script
-# changes on the main branch.  Renders HTML, commits the output back
-# to the repo root, and GitHub Pages picks it up automatically.
-#
-# Required repo settings:
-#   Settings → Actions → General → Workflow permissions
-#   → "Read and write permissions"  (so the bot can git push)
-#
-#   Settings → Pages → Source
-#   → "Deploy from a branch"  →  branch: main  /  folder: / (root)
-
-name: Build Issues
+name: Build HTML from Markdown
 
 on:
   push:
     branches:
       - main
-    paths:
-      - "issues/**.md"          # new or updated issue content
-      - "templates/**.j2"       # template changes rebuild everything
-      - "build_all.py"          # script changes rebuild everything
-      - "build_issue.py"        # same
-      - "requirements.txt"      # dep change → rebuild
-
-  # Allow manual trigger from the Actions tab
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
 
     steps:
-      # ── 1. Checkout ──────────────────────────────────────────────────────
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0        # full history so git log works
 
-      # ── 2. Python setup ──────────────────────────────────────────────────
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
-          cache: "pip"
+          python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      # ── 3. Build ─────────────────────────────────────────────────────────
-      # --changed flag skips issues whose .md hasn't changed since last build,
-      # but always regenerates index.html with the full up-to-date archive.
-      # Remove --changed to force a full rebuild (e.g. after template edits).
-      - name: Build all issues
-        run: python build_all.py --changed
-
-      # ── 4. Commit generated HTML back to main ────────────────────────────
-      # [skip ci] in the commit message prevents this commit from
-      # triggering another workflow run (infinite loop protection).
-      - name: Commit and push generated HTML
         run: |
-          git config user.name  "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-          # Stage only the generated HTML files in the repo root
-          git add index.html
-          git add issue*.html
+      - name: Create output directory
+        run: mkdir -p output
 
-          # Only commit if something actually changed
-          if git diff --staged --quiet; then
-            echo "No HTML changes to commit."
-          else
-            # Include which .md files triggered this build in the message
-            CHANGED=$(git diff HEAD --name-only -- "issues/*.md" | tr '\n' ' ')
-            git commit -m "build: auto-generate HTML [skip ci]
+      - name: Build HTML
+        run: python scripts/build.py
 
-Source: ${CHANGED:-template or script change}"
-            git push
-          fi
+      - name: Commit generated HTML
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add output/
+          git commit -m "Auto-generate HTML" || echo "No changes to commit"
+          git push
