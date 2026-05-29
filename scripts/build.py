@@ -24,7 +24,7 @@ env = Environment(
     loader=FileSystemLoader(TEMPLATES_DIR)
 )
 
-issue_template = env.get_template("issues_template.html.j2")
+issue_template = env.get_template("issue_template.html.j2")
 index_template = env.get_template("index_template.html.j2")
 
 # ---------------------------------------------------
