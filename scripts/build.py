@@ -90,8 +90,11 @@ for md_file in markdown_files:
 # BUILD INDEX PAGE
 # ---------------------------------------------------
 
+latest_article = generated_articles[0]
+
 rendered_index = index_template.render(
     articles=generated_articles,
+    latest=latest_article,
     generated_at=datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
 )
 
