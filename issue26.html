@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Ekurhuleni Underground — Issue 26: The Currency Nobody Prints</title>
+<meta name="description" content="How the cost of formal mobile data in South Africa produced, inside Ekurhuleni's townships, a parallel telecommunications economy — and why the East Rand's data resellers, SIM agents, and hotspot landlords understand their customers better than any network operator does.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Ekurhuleni Underground">
+<meta property="og:title" content="Issue 26: The Currency Nobody Prints">
+<meta property="og:description" content="How the cost of formal mobile data in South Africa produced, inside Ekurhuleni's townships, a parallel telecommunications economy — and why the East Rand's data resellers, SIM agents, and hotspot landlords understand their customers better than any network operator does.">
+<meta property="og:locale" content="en_ZA">
+<style>
+:root {
+  --gold:       #B8963E;
+  --dark:       #1A1A1A;
+  --mid:        #555555;
+  --light:      #888888;
+  --bg:         #FAFAF7;
+  --rule:       #DDDDDD;
+  --tint:       #F5F0E8;
+  --tint-hover: #EDE8DF;
+  --safe-l: env(safe-area-inset-left,   0px);
+  --safe-r: env(safe-area-inset-right,  0px);
+  --safe-b: env(safe-area-inset-bottom, 0px);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--dark);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 16px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+a, button { touch-action: manipulation; }
+img { max-width: 100%; height: auto; display: block; }
+
+.page-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 16px 72px;
+  padding-left:  calc(16px + var(--safe-l));
+  padding-right: calc(16px + var(--safe-r));
+  padding-bottom: calc(72px + var(--safe-b));
+}
+
+/* ── TOP NAV ── */
+.top-nav {
+  border-bottom: 1px solid var(--rule);
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  position: relative;
+  min-height: 44px;
+}
+.nav-brand {
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  color: var(--gold);
+  text-transform: uppercase;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+}
+.nav-links {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  flex-direction: column;
+  list-style: none;
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--gold);
+  min-width: 180px;
+  z-index: 200;
+  box-shadow: 0 6px 20px rgba(0,0,0,.10);
+}
+.nav-links.is-open { display: flex; }
+.nav-links li { border-bottom: 1px solid var(--rule); }
+.nav-links li:last-child { border-bottom: none; }
+.nav-links li a {
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--mid);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  min-height: 48px;
+  transition: color 0.12s, background 0.12s;
+}
+.nav-links li a:hover,
+.nav-links li a.active { color: var(--gold); background: var(--tint); }
+.nav-toggle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--mid);
+  border-radius: 1px;
+  transition: transform 0.22s ease, opacity 0.22s ease;
+  transform-origin: center;
+  pointer-events: none;
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── HEADER ── */
+.site-header {
+  border-bottom: 3px solid var(--gold);
+  padding: 14px 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.site-header .pub-name {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+.site-header .issue-meta {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  color: var(--light);
+}
+
+/* ── MASTHEAD ── */
+.masthead {
+  text-align: center;
+  padding: 36px 0 28px;
+  border-bottom: 1px solid var(--rule);
+}
+.masthead h1 {
+  font-family: Arial, sans-serif;
+  font-size: clamp(34px, 10vw, 64px);
+  font-weight: 900;
+  letter-spacing: .06em;
+  color: var(--dark);
+  line-height: 1;
+}
+.masthead h1 span { color: var(--gold); display: block; }
+.masthead .tagline {
+  font-style: italic;
+  color: var(--mid);
+  margin-top: 12px;
+  font-size: 15px;
+}
+
+/* ── LABELS ── */
+.label {
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 44px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* ── THEME BLOCK ── */
+.theme-block {
+  background: var(--tint);
+  border-left: 4px solid var(--gold);
+  padding: 24px 28px;
+  margin: 28px 0 32px;
+}
+.theme-block h2 {
+  font-family: Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 4px;
+}
+.theme-block .sub {
+  font-style: italic;
+  color: var(--mid);
+  font-size: 15px;
+  margin-bottom: 18px;
+}
+.theme-block p { margin-bottom: 14px; font-size: 16px; color: var(--mid); }
+.theme-block p:last-child { margin-bottom: 0; }
+
+/* ── ISSUE TITLE ── */
+.issue-title {
+  padding: 36px 0 28px;
+  border-bottom: 1px solid var(--rule);
+}
+.issue-title h2 {
+  font-family: Arial, sans-serif;
+  font-size: clamp(26px, 5vw, 40px);
+  font-weight: 900;
+  color: var(--dark);
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+.issue-title .deck {
+  font-style: italic;
+  font-size: 19px;
+  color: var(--mid);
+  line-height: 1.55;
+}
+
+/* ── SECTION HEAD ── */
+.section-head {
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--dark);
+  border-bottom: 3px solid var(--gold);
+  padding-bottom: 8px;
+  margin-bottom: 22px;
+}
+
+/* ── BODY COPY ── */
+p.body { margin-bottom: 20px; text-align: justify; }
+
+/* ── PULL QUOTE ── */
+blockquote.pull {
+  border-top: 3px solid var(--gold);
+  border-bottom: 3px solid var(--gold);
+  padding: 22px 32px;
+  margin: 36px 0;
+  font-style: italic;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--gold);
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* ── ESSAY SECTION LABEL ── */
+.essay-section-label {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 36px 0 10px;
+}
+
+/* ── MICRO PROFILE ── */
+.micro {
+  margin-bottom: 32px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+}
+.micro:first-of-type { border-top: none; padding-top: 0; }
+.micro-title {
+  font-family: Arial, sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 2px;
+}
+.micro-title span { color: var(--gold); }
+.micro-loc {
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--light);
+  margin-bottom: 10px;
+}
+
+/* ── MAP COORDS ── */
+.coords {
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+/* ── BIG NUMBER ── */
+.big-number {
+  text-align: center;
+  padding: 32px 0 24px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  margin: 8px 0 28px;
+}
+.big-number .num {
+  font-family: Arial, sans-serif;
+  font-size: clamp(36px, 7vw, 56px);
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+  display: block;
+  margin-bottom: 8px;
+}
+.big-number .num-label {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--mid);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+/* ── CLOSING ── */
+.byline {
+  font-style: italic;
+  color: var(--mid);
+  font-size: 15px;
+  text-align: right;
+  margin-top: 28px;
+}
+.next-issue {
+  border-top: 1px solid var(--rule);
+  margin-top: 32px;
+  padding-top: 18px;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--light);
+}
+
+/* ── SOURCES BLOCK ── */
+.sources-block {
+  background: var(--tint);
+  border-left: 4px solid var(--gold);
+  padding: 22px 26px;
+  margin: 36px 0 8px;
+}
+.sources-block h3 {
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.sources-block ol {
+  margin: 0 0 0 20px;
+  color: var(--mid);
+  font-size: 14px;
+  line-height: 1.7;
+}
+.sources-block li { margin-bottom: 8px; }
+.sources-block li:last-child { margin-bottom: 0; }
+
+/* ── FOOTER ── */
+.site-footer {
+  border-top: 1px solid var(--rule);
+  padding: 24px 0 0;
+  margin-top: 60px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  color: var(--light);
+  text-align: center;
+}
+.site-footer a { color: var(--gold); text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; }
+.footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px 18px;
+  margin-top: 10px;
+}
+.footer-copy { margin-top: 10px; font-size: 11px; }
+
+hr.rule {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 44px 0;
+}
+
+/* ── RESPONSIVE ── */
+@media (min-width: 480px) {
+  body { font-size: 17px; }
+  .page-wrap { padding: 0 24px 80px; }
+  .masthead { padding: 48px 0 32px; }
+}
+@media (min-width: 640px) {
+  .nav-toggle { display: none; }
+  .nav-links {
+    display: flex !important;
+    flex-direction: row;
+    position: static;
+    background: none;
+    border: none;
+    box-shadow: none;
+    min-width: 0;
+    gap: 24px;
+    align-items: center;
+  }
+  .nav-links li { border-bottom: none; }
+  .nav-links li a { font-size: 12px; padding: 0; min-height: 44px; }
+  .nav-links li a:hover,
+  .nav-links li a.active { background: none; color: var(--gold); }
+}
+@media (max-width: 480px) {
+  blockquote.pull { padding: 16px 18px; font-size: 18px; }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:   #111110;
+    --dark: #F0EDE6;
+    --mid:  #A8A29E;
+    --light:#6B6863;
+    --rule: #2C2C2A;
+    --tint: #1C1B18;
+    --tint-hover: #242320;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- NAV -->
+  <nav class="top-nav" aria-label="Main navigation">
+    <a href="index.html" class="nav-brand" aria-label="Ekurhuleni Underground — home">Ekurhuleni Underground</a>
+    <button class="nav-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Open navigation menu">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </button>
+    <ul class="nav-links" id="main-nav" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#archive">Archive</a></li>
+      <li><a href="partners.html">Partners</a></li>
+    </ul>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <span class="pub-name">Ekurhuleni Underground</span>
+    <span class="issue-meta">Issue 26 &nbsp;|&nbsp; 17 July 2026</span>
+  </header>
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <h1>EKURHULENI<span>UNDERGROUND</span></h1>
+    <p class="tagline">The hidden systems of the East Rand</p>
+  </div>
+
+  <!-- THEME ANALYSIS -->
+  <div class="label">Theme Analysis — Issue 26</div>
+  <div class="theme-block">
+    <h2>The Daveyton Bandwidth Market</h2>
+    <p class="sub">Why this theme matters for the long-term economic story of Ekurhuleni</p>
+    <p>The theme of the Daveyton Bandwidth Market is not a story about internet access. It is a story about granularity — about the gap between the smallest unit of connectivity a formal network is willing to sell and the smallest unit a customer can actually afford to buy, and about the informal economy that has grown, precisely and profitably, inside that gap.</p>
+    <p><strong>The deep story:</strong> how the cost of formal mobile data in South Africa — among the least affordable in the world by international comparison — has produced, inside Ekurhuleni's townships, a parallel telecommunications economy: informal SIM and RICA registration agents, resellers who split bulk data bundles into increments no network itself sells, and hotspot landlords who buy a single high-capacity home connection and resell access to it, neighbour by neighbour, as an unlicensed micro-internet service.</p>
+    <p><strong>Three supporting micro-stories:</strong> the registration agents of Daveyton's taxi rank who navigate RICA's documentation requirements for residents whose housing arrangements the requirements never anticipated; the bundle splitters of the market precinct who sell data and airtime in denominations as small as R2, calibrated to what a daily-wage customer has in hand at a given moment rather than to any monthly billing cycle; and the hotspot landlords of Daveyton's residential streets, who resell timed access to a single fibre or LTE connection across a radius of neighbouring households.</p>
+    <p><strong>The overlooked place:</strong> the market precinct fanning out from Daveyton's main taxi rank, where a layer of data and airtime commerce operates from folding tables and handwritten price lists alongside the food, clothing, and hardware trade this publication has documented elsewhere on the East Rand.</p>
+    <p><strong>The interesting statistic:</strong> South Africa ranks 149th out of 237 countries and territories surveyed for mobile data affordability — a price position steep enough to have generated a functioning informal resale economy beneath the formal mobile networks.</p>
+  </div>
+
+  <hr class="rule">
+
+  <!-- ISSUE TITLE -->
+  <div class="label">Weekly Issue — 17 July 2026</div>
+  <div class="issue-title">
+    <h2>The Currency Nobody Prints</h2>
+    <p class="deck">How the cost of formal mobile data in South Africa produced, inside Ekurhuleni's townships, a parallel telecommunications economy — and why the East Rand's data resellers, SIM agents, and hotspot landlords understand their customers better than any network operator does.</p>
+  </div>
+
+  <!-- 1. EDITORIAL -->
+  <div class="label">1. Editorial</div>
+  <div class="section-head">The Currency Nobody Prints</div>
+
+  <p class="body">At a folding table outside the Daveyton taxi rank, a woman who has run the same pitch for six years sells something that has no physical form: increments of internet access, in denominations her network's own app has never offered. R2 buys fifty megabytes, enough for a WhatsApp voice note exchange and a scroll through a job listing group. R5 buys enough for a video call home. She did not design these denominations. Her customers did, over years of buying exactly what they could afford on a given morning, in amounts too small for any formal retailer to bother stocking.</p>
+
+  <p class="body">I have been curious about the economics of connectivity in Ekurhuleni's townships for some time, not because data is scarce here — smartphone penetration is high, and most households have at least one connected device — but because the price of that connectivity, measured against what people actually earn, has produced an entire secondary market that the formal network operators neither designed nor, in most cases, seem to be fully aware of. South Africa's mobile data is among the least affordable in the world by international comparison, priced in a currency whose purchasing power for a daily wage earner buys considerably less connectivity than the advertised bundle price suggests once transaction costs, device constraints, and irregular income are accounted for. Into that gap between the advertised price and the lived price, an informal signal economy has grown.</p>
+
+  <p class="body">This economy has three distinct layers, each addressing a different friction in the formal system: agents who help people register SIM cards against documentation requirements that assume a stability of address many township residents do not have; resellers who break bulk data bundles into increments the networks themselves consider too small to sell; and, newest and most consequential, operators who buy a single household-grade internet connection and resell access to it, hotspot by hotspot, to a radius of neighbours who could never justify the full connection cost alone.</p>
+
+  <p class="body">None of this shows up in any telecommunications regulator's market analysis. It shows up at the taxi rank, on a folding table, in denominations nobody printed but everybody understands. This issue is an attempt to describe it.</p>
+
+  <!-- 2. LONG ESSAY -->
+  <div class="label">2. The Long Essay</div>
+  <div class="section-head">The Network Beneath the Network</div>
+
+  <div class="essay-section-label">Section I — The Observation</div>
+  <p class="body">Walk the market precinct that fans out from Daveyton's main taxi rank on any weekday afternoon and the formal telecommunications economy is barely visible — no branded kiosk, no network-liveried stall. What is visible is smaller and more improvised: handwritten price lists taped to folding tables, a woman with two phones and a portable power bank working through a queue of customers each buying a specific, small increment of data or airtime, a runner moving between stalls with a satchel of prepaid vouchers bought that morning at bulk discount from a formal outlet several kilometres away. The formal network operators' shopfronts exist in Daveyton, but they sell in units — a R99 bundle, a R149 bundle — calibrated to a monthly billing cycle that assumes a salaried customer. The market around the rank sells in units calibrated to a Tuesday.</p>
+
+  <div class="essay-section-label">Section II — The Hidden System</div>
+  <p class="body">The signal economy of Daveyton operates across three layers, each solving a distinct problem the formal telecommunications system was not built to solve at township scale.</p>
+
+  <p class="body">The first is the registration layer. South Africa's RICA regulations require prepaid SIM registration against proof of identity and address — a reasonable security requirement that assumes a documentation stability many township residents, particularly those in backyard rental accommodation or informal housing, do not straightforwardly have. Into this gap, informal registration agents have moved: people who understand which documents a specific network's system will accept, who can source a compliant proof-of-address arrangement through a relationship with a formal-address host, and who charge a facilitation fee for navigating a process that, for their clients, is genuinely difficult to complete alone. They are not forging documents. They are providing a service — administrative fluency — that the formal retail channel assumes its customers already possess.</p>
+
+  <p class="body">The second layer is the bundle-splitting economy. Mobile networks sell data in denominations designed around monthly billing assumptions: bundles priced from roughly R29 upward, structured for a customer who can commit that amount at a known point in the month. A significant share of Daveyton's working population earns daily or weekly, in amounts that make a R29 commitment a real decision rather than a background subscription. Resellers address this by purchasing bulk bundles at the network's volume discount and reselling them in increments the network itself does not offer — R2, R5, R10 — priced to match what a customer has in hand at the specific moment they need to send a message, check a job listing, or make a call. The margin is thin per transaction and the volume is high; several operators serve upward of a hundred small transactions daily.</p>
+
+  <p class="body">The third layer, and the most recent, is the hotspot landlord. A resident who can qualify for and afford a single high-capacity home fibre or LTE connection installs it, then resells time-limited access to a fixed radius of neighbours via voucher codes generated through router-level guest network software — effectively operating as an unlicensed micro-internet service provider. The markup covers the landlord's investment and generates a modest return, while still leaving each individual customer paying a fraction of what an equivalent mobile data bundle would cost for the same usage — an arbitrage wide enough that a single connection can profitably serve a dozen neighbouring households.</p>
+
+  <blockquote class="pull">The networks sell in units built for a salary. The resellers sell in units built for a Tuesday — and that gap is the entire business.</blockquote>
+
+  <div class="essay-section-label">Section III — The Broader Insight</div>
+  <p class="body">What the signal economy of Daveyton reveals is a pattern this publication has now traced across water, energy, credit, and knowledge systems: wherever a formal system prices or structures itself around an assumption — stable address, monthly income, minimum viable transaction size — that a significant share of the population does not meet, an informal layer emerges specifically to bridge that mismatch. The mobile networks are not failing to serve Daveyton in any absolute sense; coverage is good, and smartphone penetration is high. What they are failing to do is price and package connectivity in units that match the actual cash-flow reality of a large share of their potential customer base. The informal resale economy is not a workaround for scarcity. It is a workaround for granularity — the gap between the smallest unit a formal system is willing to sell and the smallest unit a customer can actually afford to buy.</p>
+
+  <p class="body">This matters for how telecommunications policy and market analysis think about connectivity access in South Africa. The standard metric — smartphone penetration, network coverage percentage — measures whether infrastructure reaches a population. It does not measure whether the pricing structure sitting on top of that infrastructure is legible to the way that population actually earns and spends. Daveyton's data resellers have solved a pricing-granularity problem that no operator's product team appears to have solved for them, and they have done it with nothing more than bulk purchasing power and a folding table.</p>
+
+  <div class="essay-section-label">Section IV — The Antifragile Angle</div>
+  <p class="body">The signal economy's three layers have each strengthened in direct proportion to specific pressures on the formal system. When mobile data prices came under sustained public and regulatory scrutiny through the 2020s — South Africa has repeatedly ranked among the less affordable data markets globally in comparative international surveys — networks responded with periodic price cuts on formal bundles, but the underlying granularity mismatch persisted: a cheaper R29 bundle is still a R29 commitment a daily-wage customer may not have on a given Tuesday. Every price cut at the bundle level left the sub-bundle resale market's core value proposition — matching supply to the customer's actual moment of need — untouched.</p>
+
+  <p class="body">The hotspot landlord layer has grown for a related but distinct reason: as fibre and fixed LTE infrastructure has expanded into more of Ekurhuleni's townships, the fixed cost of a single high-capacity connection has fallen relative to what it would cost a dozen households to each buy equivalent mobile data separately, widening the arbitrage that makes reselling hotspot access worthwhile. Each infrastructure improvement intended to serve individual formal subscribers has, in practice, also lowered the landlord's cost base and increased the number of neighbours who can be economically served from a single connection. The formal system's own progress — cheaper data, better fixed infrastructure — has, at every step, expanded rather than closed the space in which the informal signal economy operates.</p>
+
+  <!-- 3. HIDDEN ECONOMY -->
+  <div class="label">3. The Hidden Economy</div>
+  <div class="section-head">Three Operations Nobody Is Watching</div>
+
+  <div class="micro">
+    <div class="micro-title"><span>1.</span> The Registration Agents</div>
+    <div class="micro-loc">Daveyton Taxi Rank / Market Precinct</div>
+    <p class="body">Around Daveyton's main taxi rank, a small number of informal agents help residents navigate prepaid SIM registration under South Africa's RICA requirements — sourcing a compliant proof-of-address arrangement through a network of formal-address hosts, understanding which documents a given network's registration system will accept, and completing a process that, for clients in backyard rental or informal housing, is genuinely difficult to finish alone. They charge a facilitation fee of a few tens of rand per registration, paid once, and rely entirely on referral for repeat business. Their service is not circumventing the law; it is translating a bureaucratic requirement designed around a settled, documented household into something workable for residents whose housing arrangements the requirement never anticipated.</p>
+  </div>
+
+  <div class="micro">
+    <div class="micro-title"><span>2.</span> The Bundle Splitters</div>
+    <div class="micro-loc">Daveyton Market Precinct / Taxi Rank Corridor</div>
+    <p class="body">A network of resellers across Daveyton's market precinct buys mobile data and airtime in bulk at the formal networks' volume-discount rate and resells it in increments — as small as R2 for around fifty megabytes — that no network itself offers as a purchasable bundle. Their customers are, overwhelmingly, daily and weekly wage earners for whom a formal R29 bundle represents a real budgeting decision rather than a background subscription. The resellers' margin per transaction is thin; their volume, in a busy stall, can run to more than a hundred transactions a day. Their pricing schedule — which increments sell, at what price, at what time of day — is entirely undocumented and entirely responsive, adjusted daily against what customers are actually spending.</p>
+  </div>
+
+  <div class="micro">
+    <div class="micro-title"><span>3.</span> The Hotspot Landlords</div>
+    <div class="micro-loc">Daveyton Residential Streets / Eastern Extension</div>
+    <p class="body">Across several of Daveyton's residential streets, a newer category of operator has emerged: residents who install a single high-capacity home fibre or fixed LTE connection and resell time-limited access to it, via router-generated voucher codes, to a fixed radius of neighbouring households. The markup covers installation and monthly cost with room for a modest return, while still leaving each individual customer paying substantially less than an equivalent mobile data bundle would cost. The landlord's asset is not the connection itself but the router configuration, the voucher system, and the neighbourhood trust that keeps a dozen households paying an unlicensed operator on time, month after month, for a service no contract formally obliges them to buy.</p>
+  </div>
+
+  <!-- 4. MAP -->
+  <div class="label">4. The Map of the Week</div>
+  <div class="section-head">The Daveyton Taxi Rank Market Precinct</div>
+  <div class="coords">26°8′S &nbsp;28°24′E</div>
+
+  <p class="body">A few hundred metres, radiating from the main taxi rank. That is the working footprint of Daveyton's informal signal economy — a market precinct where, alongside the food, clothing, and hardware trade this publication has documented in townships across the East Rand, a layer of data and airtime commerce operates from folding tables, handwritten price lists, and a rotation of runners moving prepaid vouchers between stalls. In that footprint you will find: registration agents working the rank's queue in the mornings, when new arrivals to the area are most likely to need a SIM; bundle splitters whose stalls draw steady afternoon trade timed to school pickup and shift-change; and, radiating outward into the residential streets beyond the rank itself, the quieter, less visible network of hotspot landlords whose business has no stall at all.</p>
+
+  <p class="body">What you will not find is a single branded network kiosk anywhere in the immediate precinct. The formal retail channel is present in Daveyton, but several streets away, structured for a different kind of transaction than the one happening at the rank. To watch the rank on a weekday afternoon is to understand that connectivity in Ekurhuleni's townships is not simply present or absent. It is priced, and repriced, by people the networks have never met.</p>
+
+  <!-- 5. NUMBER -->
+  <div class="label">5. The East Rand Number</div>
+  <div class="big-number">
+    <span class="num">149 / 237</span>
+    <span class="num-label">South Africa's global ranking for mobile data affordability out of 237 countries and territories surveyed — a price position steep enough to have generated a functioning informal resale economy beneath the formal mobile networks</span>
+  </div>
+
+  <p class="body">An independent international comparison of mobile data pricing placed South Africa 149th out of 237 countries and territories surveyed for data affordability, at an average cost of roughly R34.69 per gigabyte. That figure sits above the price a salaried, monthly-billed customer experiences once bulk bundle discounts are applied — and considerably above what a daily-wage customer effectively pays when forced into smaller, less efficient top-ups. The gap between those two prices is not a rounding error. In Daveyton, and in townships like it across Ekurhuleni, it is a functioning market.</p>
+
+  <!-- 6. CLOSING -->
+  <div class="label">6. Closing Reflection</div>
+  <div class="section-head">What a Folding Table Can See</div>
+
+  <p class="body">The woman at the folding table outside Daveyton's taxi rank has never seen a telecommunications regulator's market report, and has no reason to. She has, over six years, built a pricing schedule more finely calibrated to her customers' actual cash flow than anything in a network operator's product catalogue — not through data analysis, but through the accumulated evidence of who came back the next day and who didn't, and what amount, exactly, most people had in their hand on a Tuesday afternoon. The formal telecommunications sector spends considerably more than she does trying to understand its customers. It is worth asking what her folding table understands that the sector's research budgets have not yet found a way to.</p>
+
+  <p class="byline">— Ekurhuleni Underground, 17 July 2026</p>
+
+  <div class="sources-block">
+    <h3>Sources &amp; References</h3>
+    <ol>
+      <li>Cable.co.uk, "Worldwide Mobile Data Pricing" comparison (as compiled via the Prepaid Data SIM Card Wiki, South Africa entry) — South Africa ranked 149th of 237 countries and territories for data affordability, average cost ZAR 34.69 per GB, September 2023 survey.</li>
+      <li>Independent Communications Authority of South Africa (ICASA) — regulatory framework governing prepaid SIM registration under the Regulation of Interception of Communications and Provision of Communication-Related Information Act (RICA).</li>
+      <li>MyBroadband — reporting on Vodacom and MTN prepaid data price reductions following Competition Commission intervention.</li>
+    </ol>
+  </div>
+
+  <p class="next-issue">Next issue: <strong>The Muthi Corridor</strong> — how Ekurhuleni's traditional healers and herbal traders run a supply chain stretching from Mpumalanga and KwaZulu-Natal harvesters to East Rand muthi markets, and why a R3-billion-plus national industry still has no formal place on any municipal map.</p>
+
+  <footer class="site-footer" role="contentinfo">
+    <p>The hidden systems of the East Rand</p>
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="about.html">About</a>
+      <a href="index.html#archive">Archive</a>
+      <a href="partners.html">Partners</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="https://1906reblabs.github.io/ekurhuleni-underground/">1906reblabs.github.io/ekurhuleni-underground</a>
+    </nav>
+    <p class="footer-copy">© 2026 1906 Reblabs. Published weekly from Ekurhuleni, South Africa.</p>
+  </footer>
+
+</div><!-- /.page-wrap -->
+
+<script>
+(function () {
+  'use strict';
+  var toggle   = document.querySelector('.nav-toggle');
+  var navLinks = document.getElementById('main-nav');
+  if (toggle && navLinks) {
+    toggle.addEventListener('click', function () {
+      var open = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', open ? 'false' : 'true');
+      toggle.setAttribute('aria-label', open ? 'Open navigation menu' : 'Close navigation menu');
+      navLinks.classList.toggle('is-open', !open);
+    });
+    navLinks.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        toggle.setAttribute('aria-expanded', 'false');
+        navLinks.classList.remove('is-open');
+      }
+    });
+    document.addEventListener('click', function (e) {
+      if (!toggle.contains(e.target) && !navLinks.contains(e.target)) {
+        toggle.setAttribute('aria-expanded', 'false');
+        navLinks.classList.remove('is-open');
+      }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        toggle.setAttribute('aria-expanded', 'false');
+        navLinks.classList.remove('is-open');
+        toggle.focus();
+      }
+    });
+  }
+}());
+</script>
+
+</body>
+</html>
